@@ -210,7 +210,7 @@ public static class HumanUpdate
         public void RegisterNonLimbAffliction(string ID, NTNonLimbAffliction NTNonLimbAff, double Strength)
         {
             if (CharacterNT == null) return;
-            if (NTAfflictions.HasAffliction(ID) && !UpdatingNonLimbAfflictions.ContainsKey(ID))
+            if (NTAfflictions.HasAffliction(ID) && (!UpdatingNonLimbAfflictions.ContainsKey(ID)))
             {
 
                 UpdatingNonLimbAfflictions[ID] = new NTHumanNonLimbAffData(NTNonLimbAff, ID, Strength);
@@ -226,7 +226,7 @@ public static class HumanUpdate
         public void RegisterLimbAffliction(string ID, NTLimbAffliction NTLimbAff, Dictionary<LimbType, double> Strength)
         {
             if (CharacterNT == null) return;
-            if (NTAfflictions.HasAffliction(ID) && !UpdatingLimbAfflictions.ContainsKey(ID))
+            if (NTAfflictions.HasAffliction(ID) && (!UpdatingLimbAfflictions.ContainsKey(ID)))
             {
                 UpdatingLimbAfflictions[ID] = new NTHumanLimbAffData(NTLimbAff, ID, new Dictionary<LimbType, double>(Strength));
                 UpdatingAfflictions[ID] = UpdatingLimbAfflictions[ID];
@@ -240,7 +240,7 @@ public static class HumanUpdate
         public void RegisterBloodAffliction(string ID, NTBloodAffliction NTBloodAff, double Strength)
         {
             if (CharacterNT == null) return;
-            if (NTAfflictions.HasAffliction(ID) && !UpdatingBloodAfflictions.ContainsKey(ID))
+            if (NTAfflictions.HasAffliction(ID) && (!UpdatingBloodAfflictions.ContainsKey(ID)))
             {
                 UpdatingBloodAfflictions[ID] = new NTHumanBloodAffData(NTBloodAff, ID, Strength);
                 UpdatingAfflictions[ID] = UpdatingBloodAfflictions[ID];
@@ -254,7 +254,7 @@ public static class HumanUpdate
         public void RegisterSymptom(string ID, NTSymptom Sym)
         {
             if (CharacterNT == null) return;
-            if (NTAfflictions.HasAffliction(ID) && !UpdatingSymptoms.ContainsKey(ID))
+            if (NTAfflictions.HasAffliction(ID) && (!UpdatingSymptoms.ContainsKey(ID)))
             {
                 UpdatingSymptoms[ID] = new NTHumanSymptomData(Sym, ID);
                 UpdatingAfflictions[ID] = UpdatingSymptoms[ID];
@@ -268,7 +268,7 @@ public static class HumanUpdate
         public void RegisterLimbSymptom(string ID, NTLimbSymptom Sym, Dictionary<LimbType,double> Strength, Dictionary<LimbType, int> UpdateTime)
         {
             if (CharacterNT == null) return;
-            if (NTAfflictions.HasAffliction(ID) && !UpdatingLimbSymptoms.ContainsKey(ID))
+            if (NTAfflictions.HasAffliction(ID) && (!UpdatingLimbSymptoms.ContainsKey(ID)))
             {
                 UpdatingLimbSymptoms[ID] = new NTHumanLimbSymptomData(Sym, ID, new Dictionary<LimbType, double>(Strength), new Dictionary<LimbType, int>(UpdateTime));
                 UpdatingAfflictions[ID] = UpdatingLimbSymptoms[ID];
@@ -792,7 +792,7 @@ public static class HumanUpdate
 
             if (Human == null) return;
 
-            if (!(Human.IsHuman && Human.TeamID == CharacterTeamType.Team1 || Human.TeamID == CharacterTeamType.Team2 && !Human.IsDead))
+            if (!(Human.IsHuman && Human.TeamID == CharacterTeamType.Team1 || Human.TeamID == CharacterTeamType.Team2 && (!Human.IsDead)))
             {
                 if (!HasAffliction(Human, "luabotomy")) return;
             }

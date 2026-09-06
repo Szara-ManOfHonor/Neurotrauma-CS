@@ -1287,6 +1287,9 @@ namespace Neurotrauma
         /// <returns>True if the Affliction is present, else False.</returns>
         public static bool HasAffliction(Character Character, string Identifier = "", float MinAmount = 0)
         {
+            //HF.Print($"Affstrength is Not loaded for {Identifier}");
+            //Print($"Affstrength is Not loaded for {Identifier}");
+            //LuaCsLogger.Log($"Affstrength is Not loaded for {Identifier}");
             if (Identifier == "" || Character.CharacterHealth == null) 
             { 
                 return false; 
@@ -1295,11 +1298,14 @@ namespace Neurotrauma
             // Is the affliction null?
             Affliction Aff = GetAffliction(Character, Identifier);
             if (Aff == null) 
-            { 
+            {
+                if (Identifier == "bloodpressure") { HF.Print($"Affstrength is null for {Identifier}"); }
                 return false; 
-            } 
+            }
 
             float AffStrength = Aff.Strength;
+
+            if (Identifier == "bloodpressure") { HF.Print($"Affstrength is {AffStrength} for {Identifier}"); }
             if (AffStrength > MinAmount)
             {
                 return true;

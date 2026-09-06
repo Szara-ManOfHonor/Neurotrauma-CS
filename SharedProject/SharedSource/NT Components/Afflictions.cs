@@ -2338,10 +2338,10 @@ namespace Neurotrauma
                    C.GetAffData("lungdamage").Strength += 0.2;
 
                    // Reduce Husk Infection
-                   if (HF.HasAffliction(C.Human, "huskinfection") && C.GetAffData("huskinfection").Strength < 75)
-                   {
+                   //if (HF.HasAffliction(C.Human, "huskinfection") && C.GetAffData("huskinfection").Strength < 75)
+                   //{
                        C.GetAffData("huskinfection").Strength -= 1;
-                   }
+                   //}
 
                    // Sepsis
                    if (C.GetAffData("sepsis").Strength > 0)
@@ -3379,6 +3379,8 @@ namespace Neurotrauma
                     if (!(HF.HasAffliction(C.Human, "bloodpressure")))
                     {
                         AffData.Strength = 100f;
+                        HF.Print($"Added a bood pressure w hf print");
+                        LuaCsLogger.Log($"Added a bood pressure w hf print w luacslogger");
                     }
 
                     // Does not progress in Stasis
